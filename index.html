@@ -18,11 +18,41 @@
             line-height: 1.5em;
             color: #F2DFD5;
         }
+        @media(max-width: 500px){
+            p{
+                font-size: 1.5em;
+            }
+        }
+        [input-container]{
+            text-align: center;
+            padding: 50px;
+        }
+        [input-container] input{
+            width: 300px;
+            padding: 10px;
+            outline: none;
+        }
+        @media(max-width: 500px){
+            [input-container] input{
+                width: 200px;
+            }
+        }
+        [input-container] button{
+            padding: 12px;
+            background-color: rgb(204, 115, 38);
+            border: none;
+            color: #F2DFD5;
+            outline: none;
+        }
     </style>
     <body>
         <h1>Geo-Search</h1>
-        <p>Search for places of your interest and extract information 
+        <p>Search for places of your interest and get information 
             such as timezone, map and local weather conditions like 
             temperature, wind speed, humidity, and precipitation.</p>
+        <form input-container>
+            <input placeholder="Search for city">
+            <button>Search</button>
+        </form>
     </body>
 </html>

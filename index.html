@@ -12,47 +12,115 @@
             text-align: center;
             font-size: 2.8em;
         }
-        p{
-            text-align: center;
-            font-size: 1.7em;
-            line-height: 1.5em;
-            color: #F2DFD5;
-        }
-        @media(max-width: 500px){
-            p{
-                font-size: 1.5em;
-            }
-        }
+        
         [input-container]{
             text-align: center;
-            padding: 50px;
+            padding: 60px;
         }
         [input-container] input{
             width: 300px;
             padding: 10px;
             outline: none;
+            border: none;
         }
         @media(max-width: 500px){
             [input-container] input{
-                width: 200px;
+                width: 160px;
             }
         }
         [input-container] button{
-            padding: 12px;
+            padding: 10px;
             background-color: rgb(204, 115, 38);
             border: none;
             color: #F2DFD5;
             outline: none;
         }
+        [input-container] button:hover{
+            background-color:#F2DFD5;
+            color:rgb(204, 115, 38);
+        }
+        #heading-container p{
+            text-align: center;
+            font-size: 1.7em;
+            line-height: 1.5em;
+            color: #F2DFD5;
+        }
+        #weather-report-container p{
+            font-size: 1.5em;
+            color: white;
+            text-align: center;
+            line-height: 1.3em;
+        }
+        @media(max-width: 500px){
+            p{
+                font-size: 1em;
+            }
+        }
+        #weather-report-container h2{
+            font-size: 2em;
+            color: white;
+            text-align: center;
+        }
+        @media(max-width: 500px){
+            #weather-report-container h2{
+                font-size: 1.7em;
+            }
+        }
+        #weather-report-container{
+            width: 70%;
+            margin: 0 auto;
+            background-color: rgb(204, 115, 38);
+            padding: 20px;
+        }
     </style>
     <body>
-        <h1>Geo-Search</h1>
-        <p>Search for places of your interest and get information 
-            such as timezone, map and local weather conditions like 
-            temperature, wind speed, humidity, and precipitation.</p>
-        <form input-container>
-            <input placeholder="Search for city">
-            <button>Search</button>
-        </form>
+        <div id="heading-container">
+            <h1>Geo-Search</h1>
+            <p>Search for places of your interest and get information 
+                such as timezone, map and local weather conditions like 
+                temperature, wind speed, humidity, and precipitation.</p>
+            <form input-container id="input-container">
+                <input id="city" placeholder="Search for city" type="text">
+                <button type="button" id="search-button">Search</button>
+            </form>
+        </div>
+        
+
+        <div id="weather-report-container">
+            <h2 id="weather-report-heading"></h2>
+            <p id="weather-report"></p>
+        </div>
+
+        <script>
+            const inputContainer = document.getElementById("input-container");
+            const reportSectionHeading = document.getElementById("weather-report-heading");
+            const weatherReport = document.querySelector("#weather-report");
+            const searchButton = document.getElementById("search-button");
+            const reportSectionContainer = document.getElementById("weather-report-container");
+            reportSectionContainer.style.display = 'none';
+            let b = a + b;
+            
+            const getData = () => {
+                const cityInput = document.getElementById("city").value;
+                fetch('https://api.openweathermap.org/data/2.5/weather?q=' + cityInput + '&APPID=ab5ae10bb222c2259144e71e0e09959d')
+                .then((response) => response.json())
+                .then((data) => {
+                    if(data.message === 'city not found'){
+                        reportSectionHeading.textContent = "City Not Found!";
+                        weatherReport.style.display = 'none';
+                     }
+                     else{
+                        reportSectionHeading.textContent = `Weather report on ${cityInput}`;
+                     }
+                    reportSectionContainer.style.display = 'block';
+                    
+                    weatherReport.textContent = `Today in ${cityInput}, ` + 'the weather condition is ' + data.weather[0].main + ', ' + 'the wind speed is ' + data.wind.speed + ', ' + 'temperature is ' + data.main.temp + ' and humidity is ' + data.main.humidity + '.'
+                    
+                })
+                .catch((err) => console.log(err))
+            }
+            
+            searchButton.addEventListener('click', getData);
+        </script>
     </body>
 </html>

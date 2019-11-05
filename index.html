@@ -5,10 +5,10 @@
     </head>
     <style>
         body{
-            background-color: #3B4B59;
+            background-color: #026873;
         }
         h1{
-            color: rgb(204, 115, 38);
+            color: #D5F2E2;
             text-align: center;
             font-size: 2.8em;
         }
@@ -30,24 +30,24 @@
         }
         [input-container] button{
             padding: 10px;
-            background-color: rgb(204, 115, 38);
+            background-color: #D5F2E2;
             border: none;
-            color: #F2DFD5;
+            color: #026873;
             outline: none;
         }
         [input-container] button:hover{
-            background-color:#F2DFD5;
-            color:rgb(204, 115, 38);
+            background-color: #F29484;
+            color: white;
         }
         #heading-container p{
             text-align: center;
             font-size: 1.7em;
             line-height: 1.5em;
-            color: #F2DFD5;
+            color: white;
         }
         #weather-report-container p{
             font-size: 1.5em;
-            color: white;
+            color: #026873;
             text-align: center;
             line-height: 1.3em;
         }
@@ -58,7 +58,7 @@
         }
         #weather-report-container h2{
             font-size: 2em;
-            color: white;
+            color: #026873;
             text-align: center;
         }
         @media(max-width: 500px){
@@ -69,8 +69,27 @@
         #weather-report-container{
             width: 70%;
             margin: 0 auto;
-            background-color: rgb(204, 115, 38);
+            background-color: #ACF2DE;
+            /*background-image: linear-gradient(#D5F2E2);*/
             padding: 20px;
+            border-radius: 5px;
+        }
+        #weather-report-container button{
+            text-align: center;
+            padding: 10px;
+            display: block;
+            margin: auto;
+            background-color: #026873;
+            color: #ACF2DE;
+            outline: none;
+            border: none;
+        }
+        #weather-report-container button:hover{
+            color: #ACF2DE;
+            background-color: #095a63;
+        }
+        #map-image{
+            height:50%;
         }
     </style>
     <body>
@@ -87,8 +106,14 @@
         
 
         <div id="weather-report-container">
-            <h2 id="weather-report-heading"></h2>
-            <p id="weather-report"></p>
+            <div>
+                <h2 id="weather-report-heading"></h2>
+                <p id="weather-report"></p>
+                <button id="view-map-button">View Map</button>
+            </div>
+            <div>
+                <img id="map-image">
+            </div>
         </div>
 
         <script>
@@ -108,6 +133,7 @@
                     if(data.message === 'city not found'){
                         reportSectionHeading.textContent = "City Not Found!";
                         weatherReport.style.display = 'none';
+                        viewMapButton.style.display = 'none';
                      }
                      else{
                         reportSectionHeading.textContent = `Weather report on ${cityInput}`;
@@ -115,12 +141,31 @@
                     reportSectionContainer.style.display = 'block';
                     
                     weatherReport.textContent = `Today in ${cityInput}, ` + 'the weather condition is ' + data.weather[0].main + ', ' + 'the wind speed is ' + data.wind.speed + ', ' + 'temperature is ' + data.main.temp + ' and humidity is ' + data.main.humidity + '.'
-                    
+                    console.log(data)
                 })
                 .catch((err) => console.log(err))
             }
-            
             searchButton.addEventListener('click', getData);
+        
+            
+            const viewMapButton = document.querySelector("#view-map-button");
+            
+
+            /*const getMap = () => {
+                const mapCityInput = document.getElementById("city").value;
+                fetch('https://maps.googleapis.com/maps/api/staticmap?center=' + mapCityInput + '&zoom=14&size=400x400&key=AIzaSyBAZKbYaZnUJ5yS9Vy6FjHkjKaCnrN06ug&callback=getMap')
+                
+                .then((mapData) => {
+                    const mapImage = document.getElementById('map-image');
+                    mapImage.src = mapData;
+                    console.log(mapData);
+                })
+                .catch((error) => console.log(error))
+
+                
+            }
+            
+            viewMapButton.addEventListener('click', getMap);*/
         </script>
     </body>
 </html>

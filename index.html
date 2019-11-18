@@ -6,6 +6,7 @@
         <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
         <script src="https://kit.fontawesome.com/2c1c76b735.js" crossorigin="anonymous"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href="https://fonts.googleapis.com/css?family=Satisfy&display=swap" rel="stylesheet">
     </head>
     <style>
         body{
@@ -17,6 +18,7 @@
             text-align: center;
             font-size: 2.8em;
             margin-left: 15px;
+            font-family: 'Satisfy', cursive;
         }
         
         [input-container]{
@@ -93,23 +95,30 @@
                     transform: scale(1);
                 }
             }
-        #weather-report-container button{
-            text-align: center;
+        #convert-button-container2 button{
             padding: 10px;
-            display: block;
-            margin: auto;
+            margin:0 auto;
             background-color: #026873;
             color: #ACF2DE;
             outline: none;
             border: none;
         }
-        #weather-report-container button:hover{
+
+        #convert-button-container2 button:hover{
             color: #ACF2DE;
             background-color: #095a63;
         }
-        #map-image{
-            height:50%;
+        @media(max-width: 500px){
+            #convert-button-container2 button{
+                padding: 5px;
+                }
+                
+                
+            }
+        #convert-button-container2{
+            text-align: center;
         }
+        
         header{
             display: flex;
             background-color: white;
@@ -138,6 +147,7 @@
               outline: none;
               border: none;
               color: white;
+              cursor: pointer;
               background-image: linear-gradient(80deg,#188D90,#50C2B4);
            }
         #convert-button-container:hover{
@@ -167,6 +177,7 @@
                 }
                 
             }
+            
             
            
     </style>
@@ -206,22 +217,17 @@
             <div>
                 <h2 id="weather-report-heading"></h2>
                 <p id="weather-report"></p>
-                <button id="view-map-button">View Map</button>
             </div>
-            <div>
-                <img id="map-image">
+            <div id="convert-button-container2">
+                <button id="convert-celsius">Convert to celsius</button>
+                <button id="convert-fahrenheit">Convert to fahrenheit</button>
             </div>
-        </div>
+            
+        </div><br><br>
         
-        <hr>
-        <div>
-            <div>
-                <h2>Convert Temperature</h2>
-            </div>
-            <div>
-                
-            </div>
-        </div>
+        
+        
+        
 
         <script>
             const inputContainer = document.getElementById("input-container");
@@ -230,7 +236,11 @@
             const searchButton = document.getElementById("search-button");
             const reportSectionContainer = document.getElementById("weather-report-container");
             reportSectionContainer.style.display = 'none';
-        
+            
+
+            const celsius = document.getElementById("convert-celsius");
+            const fahrenheit = document.getElementById("convert-fahrenheit");           
+            const conversion = document.getElementById("conversion-report");
             
             const getData = () => {
                 const cityInput = document.getElementById("city").value;
@@ -240,33 +250,50 @@
                     if(data.message === 'city not found'){
                         reportSectionHeading.textContent = "City Not Found!";
                         weatherReport.style.display = 'none';
-                        viewMapButton.style.display = 'none';
+                        celsius.style.display = 'none';
+                        fahrenheit.style.display = 'none';
                      }
                      else if(cityInput === ""){
                         reportSectionHeading.textContent = "Searchbox is empty!";
                         weatherReport.style.display = 'none';
-                        viewMapButton.style.display = 'none';
+                        celsius.style.display = 'none';
+                        fahrenheit.style.display = 'none';
                     }
                      else{
                         reportSectionHeading.textContent = `Weather report on ${cityInput}`;
                      }
                     reportSectionContainer.style.display = 'block';
                     
-                    weatherReport.textContent = `Today in ${cityInput}, ` + 'the weather condition is ' + data.weather[0].main + ', ' + 'the wind speed is ' + data.wind.speed + ', ' + 'temperature is ' + data.main.temp + ' and humidity is ' + data.main.humidity + '.'
+                    weatherReport.textContent = `Today in ${cityInput}, ` + 'the weather condition is ' + data.weather[0].description + ', ' + 'the wind speed is ' + data.wind.speed + ', ' + 'temperature is ' + data.main.temp + '°K' + ' and humidity is ' + data.main.humidity + '.'
                     console.log(data)
+
+
+                    fahrenheit.addEventListener('click', convertToFahrenheit = () => {
+                        weatherReport.textContent = `Converted to Fahrenheit, the weather in ${cityInput} is ` + parseInt(data.main.temp - 273.15) * 9/5 + '°F';
+                    })
+
+                    celsius.addEventListener('click', convertToCelsius = () => {
+                        weatherReport.textContent = `Converted to Celsius, the weather in ${cityInput} is ` + parseInt(data.main.temp - 273.15) + '°C';
+                    })
                 })
                 .catch((err) => console.log(err))
+
+
+                
             }
             searchButton.addEventListener('click', getData);
         
+
+            
+
+        
+        
+
+
+
             
             const viewMapButton = document.querySelector("#view-map-button");
             
-
-
-
-            
-        
             /*const getMap = () => {
                 const mapCityInput = document.getElementById("city").value;
                 fetch('https://maps.googleapis.com/maps/api/staticmap?center=' + mapCityInput + '&zoom=14&size=400x400&key=AIzaSyBAZKbYaZnUJ5yS9Vy6FjHkjKaCnrN06ug&callback=getMap')

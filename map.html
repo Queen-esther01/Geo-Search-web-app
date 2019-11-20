@@ -16,8 +16,8 @@
         h1{
             color: #188D90;
             text-align: center;
-            font-size: 2.5em;
-            margin-left: 25px;
+            font-size: 2.8em;
+            margin-left: 15px;
             font-family: 'Satisfy', cursive;
         }
         
@@ -38,13 +38,13 @@
         }
         [input-container] button{
             padding: 10px;
-            background-color: #F29484;
+            background-color: #D5F2E2;
             border: none;
-            color: white;
+            color: #026873;
             outline: none;
         }
         [input-container] button:hover{
-            background-color: rgb(138, 6, 17);
+            background-color: #F29484;
             color: white;
         }
         #heading-container p{
@@ -60,12 +60,9 @@
             text-align: center;
             line-height: 1.3em;
         }
-        @media(max-width: 800px){
-            #heading-container p{
-                font-size: 1.3em;
-            }
-            #weather-report-container p{
-                font-size: 1.3em;
+        @media(max-width: 500px){
+            p{
+                font-size: 1em;
             }
         }
         #weather-report-container h2{
@@ -101,7 +98,7 @@
         #convert-button-container2 button{
             padding: 10px;
             margin:0 auto;
-            background-color: rgb(138, 6, 17);
+            background-color: #026873;
             color: #ACF2DE;
             outline: none;
             border: none;
@@ -180,17 +177,16 @@
                 }
                 
             }
-        
-           /* #view-map-button{
+            #view-map-button{
                 width: 70%;
                 margin: 0 auto;
                 margin-top: 10px;
-                background-color:rgb(138, 6, 17);
-            background-image: linear-gradient(#D5F2E2);
-                color: white;
+                background-color: #ACF2DE;
+            /*background-image: linear-gradient(#D5F2E2);*/
                 padding: 10px;
                 border: none;
                 outline: none;
+                border-radius: 5px;
                 animation-name: weather-report;
                 animation-duration: 2s;
                 animation-iteration-count: 1;
@@ -198,30 +194,11 @@
             }
             #view-map-button-container{
                 text-align: center;
-            } */
+            }
             
-            img{
-                display: block;
-                margin: auto;
-                margin-top: 20px;
-                border: 5px solid #F29484;
-                padding: 10px;
-                background-color: white;
-            }
-            @media(max-width: 800px){
-                img{
-                    width: 80%;
-                }
-            }
-            #map-image-container{
-                background-image: url(Images/calm-body-of-water-1363876.jpg);
-                padding: 10px ;
-                background-position: center;
-                margin-top: 15px;
-            }
+           
     </style>
     <body>
-            
         <div id="heading-container">
             <header>
                     <div>
@@ -252,29 +229,24 @@
             </form>
         </div>
         
-        <div>
-            <div id="weather-report-container">
-                <div>
-                    <h2 id="weather-report-heading"></h2>
-                    <p id="weather-report"></p>
-                </div>
-                <div id="convert-button-container2">
-                    <button id="convert-celsius">Convert to celsius</button>
-                    <button id="convert-fahrenheit">Convert to fahrenheit</button>
-                </div>
-                
-            </div>
-    
-            <!-- <div id="view-map-button-container">
-                <button id="view-map-button">View Map</button>
-            </div> -->
-    
-            <div id="map-image-container">
-                <img id="map-image">
-            </div>
 
+        <div id="weather-report-container">
+            <div>
+                <h2 id="weather-report-heading"></h2>
+                <p id="weather-report"></p>
+            </div>
+            <div id="convert-button-container2">
+                <button id="convert-celsius">Convert to celsius</button>
+                <button id="convert-fahrenheit">Convert to fahrenheit</button>
+            </div>
             
         </div>
+        <div id="view-map-button-container">
+            <button id="view-map-button">View Map</button>
+        </div>
+
+        
+        <img id="map-image" width="300px">
         
         
         
@@ -289,18 +261,17 @@
             const searchButton = document.getElementById("search-button");
             const reportSectionContainer = document.getElementById("weather-report-container");
             reportSectionContainer.style.display = 'none';
-            const mapImageContainer = document.getElementById('#map-image-container')
+            
 
             const celsius = document.getElementById("convert-celsius");
             const fahrenheit = document.getElementById("convert-fahrenheit");           
             const conversion = document.getElementById("conversion-report");
             
-            //const viewMapButtonContainer = document.getElementById('view-map-button-container');
-            //const viewMap = document.getElementById('view-map-button'); 
+            const viewMapButtonContainer = document.getElementById('view-map-button-container');
+            const viewMap = document.getElementById('view-map-button'); 
             const mapImage = document.getElementById('map-image');
-            //viewMapButtonContainer.style.display = 'none';
-            //mapImage.style.display = 'none';
-
+            viewMap.style.display = 'none';
+            
             const getData = () => {
                 const cityInput = document.getElementById("city").value;
                 fetch('https://api.openweathermap.org/data/2.5/weather?q=' + cityInput + '&APPID=ab5ae10bb222c2259144e71e0e09959d')
@@ -311,57 +282,56 @@
                         weatherReport.style.display = 'none';
                         celsius.style.display = 'none';
                         fahrenheit.style.display = 'none';
-                        //viewMap.style.display = 'none';
-                        //mapImage.style.display = 'none';
+                        viewMap.style.display = 'none';
                      }
                      else if(cityInput === ""){
                         reportSectionHeading.textContent = "Searchbox is empty!";
                         weatherReport.style.display = 'none';
                         celsius.style.display = 'none';
                         fahrenheit.style.display = 'none';
-                        //viewMap.style.display = 'none';
-                        //mapImage.style.display = 'none';
+                        viewMap.style.display = 'none';
                     }
                      else{
                         reportSectionHeading.textContent = `Weather report on ${cityInput}`;
                      }
                     reportSectionContainer.style.display = 'block';
-                    //viewMapButtonContainer.style.display = 'block';
-                    
-                    weatherReport.textContent = `Today in ${cityInput}, ` + 'the weather condition is ' + data.weather[0].description + ', ' + 'the wind speed is ' + data.wind.speed + ', ' + 'temperature is ' + data.main.temp + '°K' + ' and humidity is ' + data.main.humidity + '.'
-                    console.log(data)
+                    viewMap.style.display = 'block';
 
-                     //convert to Fahrenheit
+                    weatherReport.textContent = `Today in ${cityInput}, ` + 'the weather condition is ' + data.weather[0].description + ', ' + 'the wind speed is ' + data.wind.speed + ', ' + 'temperature is ' + data.main.temp + '°K' + ' and humidity is ' + data.main.humidity + '.'
+                    console.log(data);
+                    console.log(data.coord.lon)
+
+
                     fahrenheit.addEventListener('click', convertToFahrenheit = () => {
                         weatherReport.textContent = `Converted to Fahrenheit, the weather in ${cityInput} is ` + parseInt(data.main.temp - 273.15) * 9/5 + '°F';
                     })
 
-                    //convert to Celsius
                     celsius.addEventListener('click', convertToCelsius = () => {
                         weatherReport.textContent = `Converted to Celsius, the weather in ${cityInput} is ` + parseInt(data.main.temp - 273.15) + '°C';
                     })
 
 
-                    //Loading map
-                    mapImage.src = ('https://maps.googleapis.com/maps/api/staticmap?center=' + cityInput + '&zoom=12&size=600x300&maptype=roadmap&markers=color:blue%7Clabel:S%7C' + data.coord.lat + ',' + data.coord.lon + '&key=AIzaSyBAZKbYaZnUJ5yS9Vy6FjHkjKaCnrN06ug')
-                    /*const getMap = () => {
-                        
+                    
+                    const getMap = () => {
+                    mapImage.src = ('https://maps.googleapis.com/maps/api/staticmap?center=' + cityInput + '&zoom=13&size=600x300&maptype=roadmap&markers=color:blue%7Clabel:S%7C' + data.coord.lat + ',' + data.coord.lon + '&key=AIzaSyBAZKbYaZnUJ5yS9Vy6FjHkjKaCnrN06ug')
                     }
-                    viewMap.addEventListener('click', getMap); */
-                })
-                .catch((err) => console.log(err))
+                    viewMap.addEventListener('click', getMap);
+    
+            })
+            .catch((err) => console.log(err))
 
-                
 
                 
             }
             searchButton.addEventListener('click', getData);
-            mapImage.src = ('https://maps.googleapis.com/maps/api/staticmap?center=Brooklyn+Bridge,New+York,NY&zoom=13&size=600x300&maptype=roadmap&markers=color:blue%7Clabel:S%7C40.702147,-74.015794&markers=color:green%7Clabel:G%7C40.711614,-74.012318&markers=color:red%7Clabel:C%7C40.718217,-73.998284&key=AIzaSyBAZKbYaZnUJ5yS9Vy6FjHkjKaCnrN06ug')
+        
 
-            //console.log(window.screen.width);
-            //console.log(window.screen.height);
+            
 
+        
     
+            
+            
         </script>
     </body>
 </html>

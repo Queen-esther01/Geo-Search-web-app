@@ -4,8 +4,7 @@
         <title>Geo-Search web app</title>
         <meta charset="utf-8"> 
         <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-        <script src="https://kit.fontawesome.com/2c1c76b735.js" crossorigin="anonymous"></script>
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <script src="https://kit.fontawesome.com/2c1c76b735.js" crossorigin="anonymous" ></script>
         <link href="https://fonts.googleapis.com/css?family=Satisfy&display=swap" rel="stylesheet">
     </head>
     <style>
@@ -82,7 +81,6 @@
             width: 70%;
             margin: 0 auto;
             background-color: #ACF2DE;
-            /*background-image: linear-gradient(#D5F2E2);*/
             padding: 20px;
             border-radius: 5px;
             animation-name: weather-report;
@@ -181,25 +179,6 @@
                 
             }
         
-           /* #view-map-button{
-                width: 70%;
-                margin: 0 auto;
-                margin-top: 10px;
-                background-color:rgb(138, 6, 17);
-            background-image: linear-gradient(#D5F2E2);
-                color: white;
-                padding: 10px;
-                border: none;
-                outline: none;
-                animation-name: weather-report;
-                animation-duration: 2s;
-                animation-iteration-count: 1;
-                animation-timing-function: linear;
-            }
-            #view-map-button-container{
-                text-align: center;
-            } */
-            
             img{
                 display: block;
                 margin: auto;
@@ -219,15 +198,15 @@
                 background-position: center;
                 margin-top: 15px;
             }
+            
     </style>
     <body>
-            
         <div id="heading-container">
             <header>
-                    <div>
-                        <h1>Geo-Search</h1>
-                    </div>
-                    <div id="button-container">
+                <div>
+                    <h1>Geo-Search</h1>
+                </div>
+                <div id="button-container">
                     <div>
                         <ul>
                             <li>View Map</li>
@@ -235,7 +214,6 @@
                             <li><button id="convert-button-container">Convert Temperature</button></li>
                         </ul>
                     </div>
-                    
                 </div>
 
                 <div class="menu-icon">
@@ -265,23 +243,16 @@
                 
             </div>
     
-            <!-- <div id="view-map-button-container">
-                <button id="view-map-button">View Map</button>
-            </div> -->
-    
             <div id="map-image-container">
                 <img id="map-image">
             </div>
-
             
         </div>
+        <div class="fb-share-button" data-href data-layout="button_count" data-size="large"><a target="_blank" id="button-link"  class="fb-xfbml-parse-ignore">Share</a></div>
         
         
         
         
-        
-        
-
         <script>
             const inputContainer = document.getElementById("input-container");
             const reportSectionHeading = document.getElementById("weather-report-heading");
@@ -295,11 +266,8 @@
             const fahrenheit = document.getElementById("convert-fahrenheit");           
             const conversion = document.getElementById("conversion-report");
             
-            //const viewMapButtonContainer = document.getElementById('view-map-button-container');
-            //const viewMap = document.getElementById('view-map-button'); 
+             
             const mapImage = document.getElementById('map-image');
-            //viewMapButtonContainer.style.display = 'none';
-            //mapImage.style.display = 'none';
 
             const getData = () => {
                 const cityInput = document.getElementById("city").value;
@@ -311,23 +279,23 @@
                         weatherReport.style.display = 'none';
                         celsius.style.display = 'none';
                         fahrenheit.style.display = 'none';
-                        //viewMap.style.display = 'none';
-                        //mapImage.style.display = 'none';
                      }
                      else if(cityInput === ""){
                         reportSectionHeading.textContent = "Searchbox is empty!";
                         weatherReport.style.display = 'none';
                         celsius.style.display = 'none';
                         fahrenheit.style.display = 'none';
-                        //viewMap.style.display = 'none';
-                        //mapImage.style.display = 'none';
                     }
                      else{
+                        weatherReport.style.display = 'block';
                         reportSectionHeading.textContent = `Weather report on ${cityInput}`;
+                        weatherReport.textContent = `Today in ${cityInput}, ` + 'the weather condition is ' + data.weather[0].description + ', ' + 'the wind speed is ' + data.wind.speed + ', ' + 'temperature is ' + data.main.temp + '°K' + ' and humidity is ' + data.main.humidity + '.'
+                        celsius.style.display = 'inline-block';
+                        fahrenheit.style.display = 'inline-block';
                      }
+
+
                     reportSectionContainer.style.display = 'block';
-                    //viewMapButtonContainer.style.display = 'block';
-                    
                     weatherReport.textContent = `Today in ${cityInput}, ` + 'the weather condition is ' + data.weather[0].description + ', ' + 'the wind speed is ' + data.wind.speed + ', ' + 'temperature is ' + data.main.temp + '°K' + ' and humidity is ' + data.main.humidity + '.'
                     console.log(data)
 
@@ -342,25 +310,13 @@
                     })
 
 
-                    //Loading map
+                    //Loading map by assigning link
                     mapImage.src = ('https://maps.googleapis.com/maps/api/staticmap?center=' + cityInput + '&zoom=12&size=600x300&maptype=roadmap&markers=color:blue%7Clabel:S%7C' + data.coord.lat + ',' + data.coord.lon + '&key=AIzaSyBAZKbYaZnUJ5yS9Vy6FjHkjKaCnrN06ug')
-                    /*const getMap = () => {
-                        
-                    }
-                    viewMap.addEventListener('click', getMap); */
-                })
-                .catch((err) => console.log(err))
-
-                
-
-                
+                    })
+                .catch((err) => console.log(err))  
             }
             searchButton.addEventListener('click', getData);
             mapImage.src = ('https://maps.googleapis.com/maps/api/staticmap?center=Brooklyn+Bridge,New+York,NY&zoom=13&size=600x300&maptype=roadmap&markers=color:blue%7Clabel:S%7C40.702147,-74.015794&markers=color:green%7Clabel:G%7C40.711614,-74.012318&markers=color:red%7Clabel:C%7C40.718217,-73.998284&key=AIzaSyBAZKbYaZnUJ5yS9Vy6FjHkjKaCnrN06ug')
-
-            //console.log(window.screen.width);
-            //console.log(window.screen.height);
-
     
         </script>
     </body>

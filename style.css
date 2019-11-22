@@ -143,6 +143,7 @@ header{
         padding: 20px 0 40px 0;
         margin-top: 15px;
         background-color: #F2C6B6;
+        text-align: center;
     }
     iframe{
         border: 2px solid #730707;

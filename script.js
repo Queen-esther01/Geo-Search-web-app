@@ -56,7 +56,17 @@ const inputContainer = document.getElementById("input-container");
 
                     //Loading map by assigning link
                     mapImage.src = ('https://maps.googleapis.com/maps/api/staticmap?center=' + cityInput + '&zoom=12&size=600x300&maptype=roadmap&markers=color:blue%7Clabel:S%7C' + data.coord.lat + ',' + data.coord.lon + '&key=AIzaSyBAZKbYaZnUJ5yS9Vy6FjHkjKaCnrN06ug')
-                    })
+                    
+                    let shareButton = document.querySelector('.fb-share-button');
+                    let attribute = document.createAttribute('data-href');
+                    attribute.value = 'https://maps.googleapis.com/maps/api/staticmap?center=' + cityInput + '&zoom=12&size=600x300&maptype=roadmap&key=AIzaSyBAZKbYaZnUJ5yS9Vy6FjHkjKaCnrN06ug';
+                    shareButton.setAttributeNode(attribute);
+                
+                    let myLink = document.getElementById('my-link');
+                    let hrefAttribute = document.createAttribute("href");
+                    hrefAttribute.value = 'https://www.facebook.com/sharer/sharer.php?u=https://maps.googleapis.com/maps/api/staticmap?center=' + cityInput + '&zoom=12&size=600x300&maptype=roadmap&key=AIzaSyBAZKbYaZnUJ5yS9Vy6FjHkjKaCnrN06ug&amp;src=sdkpreparse';
+                    myLink.setAttributeNode(hrefAttribute);
+                })
                 .catch((err) => console.log(err))  
             }
             searchButton.addEventListener('click', getData);

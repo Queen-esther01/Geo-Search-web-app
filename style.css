@@ -25,10 +25,13 @@ h1{
     [input-container] input{
         width: 160px;
     }
+    h1{
+        font-size: 2.3em;
+    }
 }
 [input-container] button{
     padding: 10px;
-    background-color: rgb(138, 6, 17);
+    background-color: rgba(138, 6, 17);
     border: none;
     color: white;
     outline: none;
@@ -43,14 +46,14 @@ h1{
     line-height: 1.5em;
     color: #730707;
     margin-top: 60px;
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Nunito',sans-serif;
 }
 #weather-report-container p{
     font-size: 1.5em;
     color: #026873;
     text-align: center;
     line-height: 1.3em;
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Nunito',sans-serif;
 }
 @media(max-width: 800px){
     #heading-container p{
@@ -64,7 +67,7 @@ h1{
     font-size: 2em;
     color: #026873;
     text-align: center;
-    font-family: 'Lobster', cursive;
+    font-family: 'Lobster',cursive;
 }
 @media(max-width: 500px){
     #weather-report-container h2{
@@ -101,7 +104,6 @@ h1{
 }
 
 #convert-button-container2 button:hover{
-    
     background-color: #8C504A;
     color: white;
 }

@@ -1,9 +1,9 @@
 body{
-    background-color: #026873;
+    background-color: #F9E4E7;
     margin: 0;
 }
 h1{
-    color: #188D90;
+    color: #37003E;
     text-align: center;
     font-size: 2.5em;
     font-weight: bold;
@@ -28,7 +28,7 @@ h1{
 }
 [input-container] button{
     padding: 10px;
-    background-color: #F29484;
+    background-color: #37003E;
     border: none;
     color: white;
     outline: none;
@@ -41,7 +41,7 @@ h1{
     text-align: center;
     font-size: 1.7em;
     line-height: 1.5em;
-    color: white;
+    color: #C4021C;
     margin-top: 60px;
     font-family: 'Nunito', sans-serif;
 }
@@ -136,13 +136,14 @@ header{
         }
     }
     #map-image-container{
-        background-image: url(Images/calm-body-of-water-1363876.jpg);
+        background-image: url(Images/pink-flowers-photography-1128797.jpg);
         padding: 10px ;
         background-position: center;
+        background-size: contain;
         margin-top: 15px;
     }
     iframe{
-        border: 2px solid teal;
+        border: 2px solid #37003E;
         padding: 6px 0;
         margin-top: 20px;
         margin-right: 20px;

@@ -1,9 +1,9 @@
 body{
-    background-color: #F9E4E7;
+    background-color: white;
     margin: 0;
 }
 h1{
-    color: #37003E;
+    color: #730707;
     text-align: center;
     font-size: 2.5em;
     font-weight: bold;
@@ -19,7 +19,7 @@ h1{
     width: 300px;
     padding: 10px;
     outline: none;
-    border: none;
+    border: 1px solid #37003E;
 }
 @media(max-width: 500px){
     [input-container] input{
@@ -28,20 +28,20 @@ h1{
 }
 [input-container] button{
     padding: 10px;
-    background-color: #37003E;
+    background-color: rgb(138, 6, 17);
     border: none;
     color: white;
     outline: none;
 }
 [input-container] button:hover{
-    background-color: rgb(138, 6, 17);
+    background-color: #401A12;
     color: white;
 }
 #heading-container p{
     text-align: center;
     font-size: 1.7em;
     line-height: 1.5em;
-    color: #C4021C;
+    color: #730707;
     margin-top: 60px;
     font-family: 'Nunito', sans-serif;
 }
@@ -93,16 +93,17 @@ h1{
 #convert-button-container2 button{
     padding: 10px;
     margin:0 auto;
-    background-color: rgb(138, 6, 17);
-    color: white;
+    color: #ACF2DE;
+    background-color: #095a63;
     font-family: 'Nunito', sans-serif;
     outline: none;
     border: none;
 }
 
 #convert-button-container2 button:hover{
-    color: #ACF2DE;
-    background-color: #095a63;
+    
+    background-color: #8C504A;
+    color: white;
 }
 @media(max-width: 500px){
     #convert-button-container2 button{
@@ -117,7 +118,7 @@ h1{
 
 header{
     display: flex;
-    background-color: white;
+    background-color: #F2C6B6;
     justify-content: space-between;
 }
 
@@ -126,7 +127,6 @@ header{
         display: block;
         margin: auto;
         margin-top: 20px;
-        border: 5px solid #F29484;
         padding: 10px;
         background-color: white;
     }
@@ -136,17 +136,24 @@ header{
         }
     }
     #map-image-container{
-        background-image: url(Images/pink-flowers-photography-1128797.jpg);
-        padding: 10px ;
-        background-position: center;
-        background-size: contain;
+        /*background-image: url(Images/blue-sky-blur-clear-sky-color-281260.jpg);
+        background-size: contain; */
+        padding: 20px 0 40px 0;
         margin-top: 15px;
+        background-color: #F2C6B6;
     }
     iframe{
-        border: 2px solid #37003E;
+        border: 2px solid #730707;
         padding: 6px 0;
         margin-top: 20px;
         margin-right: 20px;
         width: 80px;
         height: 50px;
+    }
+    footer{
+        background-color: #730707;
+        padding: 1px;
+        color: white;
+        text-align: center;
+        font-family: 'Lobster', cursive;
     }

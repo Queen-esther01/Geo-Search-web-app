@@ -4,17 +4,37 @@
         <title>Geo-Search web app</title>
         <meta charset="utf-8"> 
         <meta name="viewport" content="width=device-width,initial-scale=1">
+        <meta name="description" content="A DevC Andela Capstone Project">
+        <meta name="keywords"
+        content="GeoSearch, DevC Capstone Project, Andela, Andela Facebook training, ejidikeesther@gmail.com, Ejidike Esther Ngozi">
+        <meta name="author" content="ejidikeesther@gmail.com">
+        <meta property="og:url"           content="https://www.your-domain.com/your-page.html" />
+        <meta property="og:type"          content="website" />
+        <meta property="og:title"         content="Geo-Search Web application" />
+        <meta property="og:description"   content="DevC Andela capstone project, developed by Ejidike Esther" />
+        <meta property="og:image"         content="https://www.your-domain.com/path/image.jpg" />
+
         <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
         <script src="https://kit.fontawesome.com/2c1c76b735.js" crossorigin="anonymous" ></script>
         <link href="https://fonts.googleapis.com/css?family=Satisfy&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Handlee&display=swap" rel="stylesheet">
         <link href="style.css" rel="stylesheet">
+    
+        
     </head>
     
     <body>
         <div id="fb-root"></div>
         <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v5.0"></script>
+        <script type="application/javascript">(function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6";
+            fjs.parentNode.insertBefore(js, fjs);
+          }(document, 'script', 'facebook-jssdk'));</script>
+
         <div id="heading-container">
             <header>
                 <div>
@@ -37,7 +57,7 @@
             </form>
         </div>
         
-        <div>
+        <section>
             <div id="weather-report-container">
                 <div>
                     <h2 id="weather-report-heading"></h2>
@@ -52,16 +72,26 @@
     
             <div id="map-image-container">
                 <img id="map-image">
-                <div class="fb-share-button" data-href="https://queen-esther01.github.io/Geo-Search-web-app/" data-layout="button_count" data-size="large"><a id="my-link" target="_blank" href = "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fqueen-esther01.github.io%2FGeo-Search-web-app%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore class="fb-xfbml-parse-ignore">Share</a></div>
-            </div>
+                <i>Note: To share weather conditions, highlight the part you want to share</i>
+                <div class="fb-quote" data-href="https://queen-esther01.github.io/Geo-Search-web-app/"></div>
+            </div> 
             
-        </div>
+        </section>
 
         <footer>
+            <section id="contact">
+                <figure class="contact-icon">
+                    <a href="https://twitter.com/lady_catheryn" target="_blank"><img src="Images/twitter.jpg" class="bottom-icon"></a>
+                    <a href="mailto:ejidikeesther@gmail.com" target="_blank"><img src="Images/emailicon.png" class="bottom-icon"></a>
+                    <a href="tel:+2348020929012" ><img src="Images/phoneicon.png" class="bottom-icon"></a>
+                </figure>
+            </section>
             <p>&copy;GeoSearch 2019 - Inspired by Andela, Creator Esther &#10084;</p>
-        </footer>
+            <!--Email:<a href="mailto:ejidikeesther@gmail.com"> ejidikeesther@gmail.com, </a>
+            Mobile: <a href="tel:+2348020929012"> +234-8020929012</a>
+            --></footer>
         
-
+        
         <script src="script.js"></script>
     </body>
 </html>

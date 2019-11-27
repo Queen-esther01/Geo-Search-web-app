@@ -175,5 +175,9 @@ header{
         transform: scale(1.8);
         transition: transform 1s;
     }
-
+    @media(max-width: 500px){
+        i{
+            font-size: 10px;
+        }
+    }
     

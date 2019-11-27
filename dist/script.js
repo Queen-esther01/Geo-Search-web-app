@@ -1,12 +1,16 @@
-
+const inputContainer = document.getElementById("input-container");
             const reportSectionHeading = document.getElementById("weather-report-heading");
             const weatherReport = document.querySelector("#weather-report");
             const searchButton = document.getElementById("search-button");
             const reportSectionContainer = document.getElementById("weather-report-container");
             reportSectionContainer.style.display = 'none';
+            const mapImageContainer = document.getElementById('#map-image-container')
 
             const celsius = document.getElementById("convert-celsius");
             const fahrenheit = document.getElementById("convert-fahrenheit");           
+            const conversion = document.getElementById("conversion-report");
+            
+             
             const mapImage = document.getElementById('map-image');
 
             const getData = () => {

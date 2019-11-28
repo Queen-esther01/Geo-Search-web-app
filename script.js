@@ -62,7 +62,8 @@ const inputContainer = document.getElementById("input-container");
             
             
             })
-            .catch((err) => console.log(err))  
+            
+            .catch((err) => console.log(err.message))
             }
 
             searchButton.addEventListener('click', getData);

@@ -26,7 +26,7 @@ h1{
         width: 160px;
     }
     h1{
-        font-size: 2.3em;
+        font-size: 2.1em;
     }
 }
 [input-container] button{
@@ -175,9 +175,21 @@ header{
         transform: scale(1.8);
         transition: transform 1s;
     }
+<<<<<<< HEAD
     @media(max-width: 500px){
         i{
             font-size: 10px;
         }
     }
+=======
+    @media(max-width: 500){
+        i{
+            display: none;
+        }
+        .bottom-icon{
+            width: 8%;
+        }
+    }
+
+>>>>>>> ft-facebook-share-button
     

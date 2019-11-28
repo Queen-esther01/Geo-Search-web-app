@@ -1,5 +1,6 @@
 const gulp = require('gulp');
 const eslint = require('eslint');
+const babel = require('gulp-babel');
 
 gulp.task('processHTML', (process) => {
     gulp.src('*.html')
@@ -13,6 +14,9 @@ gulp.task('processJS', (process) => {
         esversion: 6
     }))
     .pipe(eslint.reporter('default'))
+    .pipe(babel({
+        presets: ['env']
+    }))
     .pipe(gulp.dest('dist'));
     process();
 })

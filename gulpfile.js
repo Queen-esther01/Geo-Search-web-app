@@ -8,8 +8,14 @@ gulp.task('processHTML', (process) => {
     process();
 })
 
+gulp.task('processCSS', (process) => {
+    gulp.src('css/*.css')
+    .pipe(gulp.dest('dist'));
+    process();
+})
+
 gulp.task('processJS', (process) => {
-    gulp.src('*.js')
+    gulp.src('js/*.js')
     .pipe(eslint({
         esversion: 6
     }))

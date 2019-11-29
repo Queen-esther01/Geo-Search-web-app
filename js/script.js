@@ -56,6 +56,8 @@
             })
             
             .catch((err) => console.log(err.message))
+
+            
             }
 
             searchButton.addEventListener('click', getData);

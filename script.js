@@ -52,10 +52,6 @@
 
                     //Loading map by assigning link
                     mapImage.src = ('https://maps.googleapis.com/maps/api/staticmap?center=' + cityInput + '&zoom=12&size=600x300&maptype=roadmap&markers=color:blue%7Clabel:S%7C' + data.coord.lat + ',' + data.coord.lon + '&key=AIzaSyBAZKbYaZnUJ5yS9Vy6FjHkjKaCnrN06ug');
-               
-               let shareButton = document.getElementById('share-button');
-               shareButton.href = "https://maps.googleapis.com/maps/api/staticmap?center=" + cityInput + "&zoom=12&size=600x300&maptype=roadmap&key=AIzaSyBAZKbYaZnUJ5yS9Vy6FjHkjKaCnrN06ug" 
-            
             
             })
             

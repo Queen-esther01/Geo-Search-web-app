@@ -34,7 +34,7 @@
                      else{
                         weatherReport.style.display = 'block';
                         reportSectionHeading.textContent = `Weather report on ${cityInput}`;
-                        weatherReport.textContent = `Today in ${cityInput}, ` + 'the weather condition is ' + data.weather[0].description + ', ' + 'the wind speed is ' + data.wind.speed + ', ' + 'temperature is ' + data.main.temp + '°K' + ' and humidity is ' + data.main.humidity + '.'
+                        weatherReport.textContent = `Today in ${cityInput}, ` + 'the weather condition is ' + data.weather[0].description +', ' + 'the wind speed is ' + data.wind.speed + ', ' + 'temperature is ' + data.main.temp + '°K' + ' and humidity is ' + data.main.humidity + '.'
                         kelvin.style.display = 'inline-block';
                         fahrenheit.style.display = 'inline-block';
                      }

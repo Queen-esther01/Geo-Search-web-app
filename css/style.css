@@ -152,6 +152,23 @@ header{
         width: 80px;
         height: 50px;
     }
+    #loader-icon{
+        margin-top: 0;
+        margin-right: 0;
+        padding: 0;
+        display: block;
+        margin: auto;
+        display: none;
+        width: 200px;
+        height: 100px;
+        border: none;
+    }
+    @media(max-width: 500px){
+        #loader-icon{
+            height: 80px;
+            height: 50px;
+        }
+    }
     footer{
         background-color: #000140;
         padding: 1px;

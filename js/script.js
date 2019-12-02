@@ -5,38 +5,44 @@
             const reportSectionContainer = document.getElementById("weather-report-container");
             reportSectionContainer.style.display = 'none';
 
-            const celsius = document.getElementById("convert-celsius");
+            const kelvin = document.getElementById("convert-kelvin");
             const fahrenheit = document.getElementById("convert-fahrenheit");           
             const mapImage = document.getElementById('map-image');
 
+            const loaderIcon = document.getElementById("loader-icon");
             const getData = () => {
                 const cityInput = document.getElementById("city").value;
+                loaderIcon.style.display = "block";
+                reportSectionContainer.style.display = 'none';
                 fetch('https://api.openweathermap.org/data/2.5/weather?q=' + cityInput + '&APPID=ab5ae10bb222c2259144e71e0e09959d')
                 .then((response) => response.json())
                 .then((data) => {
                     if(data.message === 'city not found'){
                         reportSectionHeading.textContent = "City Not Found!";
                         weatherReport.style.display = 'none';
-                        celsius.style.display = 'none';
+                        kelvin.style.display = 'none';
                         fahrenheit.style.display = 'none';
+                        loaderIcon.style.display = "none";
                      }
                      else if(cityInput === ""){
                         reportSectionHeading.textContent = "Searchbox is empty!";
                         weatherReport.style.display = 'none';
-                        celsius.style.display = 'none';
+                        kelvin.style.display = 'none';
                         fahrenheit.style.display = 'none';
+                        loaderIcon.style.display = "none";
                     }
                      else{
                         weatherReport.style.display = 'block';
                         reportSectionHeading.textContent = `Weather report on ${cityInput}`;
                         weatherReport.textContent = `Today in ${cityInput}, ` + 'the weather condition is ' + data.weather[0].description + ', ' + 'the wind speed is ' + data.wind.speed + ', ' + 'temperature is ' + data.main.temp + '°K' + ' and humidity is ' + data.main.humidity + '.'
-                        celsius.style.display = 'inline-block';
+                        kelvin.style.display = 'inline-block';
                         fahrenheit.style.display = 'inline-block';
                      }
 
 
                     reportSectionContainer.style.display = 'block';
-                    weatherReport.textContent = `Today in ${cityInput}, ` + 'the weather condition is ' + data.weather[0].description + ', ' + 'the wind speed is ' + data.wind.speed + ', ' + 'temperature is ' + data.main.temp + '°K' + ' and humidity is ' + data.main.humidity + '.'
+                    weatherReport.textContent = `Today in ${cityInput}, ` + 'the weather condition is ' + data.weather[0].description + ', ' + 'the wind speed is ' + data.wind.speed + ', ' + 'temperature is ' + parseInt(data.main.temp - 273.15) + '°C' + ' and humidity is ' + data.main.humidity + '.'
+                    loaderIcon.style.display = "none";
                     console.log(data)
 
                      //convert to Fahrenheit
@@ -44,9 +50,9 @@
                         weatherReport.textContent = `Converted to Fahrenheit, the weather in ${cityInput} is ` + parseInt(data.main.temp - 273.15) * 9/5 + '°F';
                     })
 
-                    //convert to Celsius
-                    celsius.addEventListener('click', convertToCelsius = () => {
-                        weatherReport.textContent = `Converted to Celsius, the weather in ${cityInput} is ` + parseInt(data.main.temp - 273.15) + '°C';
+                    //convert to Kelvin
+                    kelvin.addEventListener('click', convertToKelvin = () => {
+                        weatherReport.textContent = `Converted to Kelvin, the weather in ${cityInput} is ` + parseInt(data.main.temp + 273.15) + '°K';
                     })
 
 
